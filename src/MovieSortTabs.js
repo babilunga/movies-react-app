@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 
 const MovieSortTabs = (props) => {
   const { sort_by, updateSortBy } = props;
-  const btnSortByHandler = (value) => {
+  const handleClick = (value) => {
     return () => updateSortBy(value);
   };
   return (
@@ -14,7 +14,7 @@ const MovieSortTabs = (props) => {
           className={classNames('sort_li', {
             active: sort_by === 'popularity.desc',
           })}
-          onClick={btnSortByHandler('popularity.desc')}
+          onClick={handleClick('popularity.desc')}
         >
           <div>Popularity 🡣</div>
         </li>
@@ -22,7 +22,7 @@ const MovieSortTabs = (props) => {
           className={classNames('sort_li', {
             active: sort_by === 'revenue.desc',
           })}
-          onClick={btnSortByHandler('revenue.desc')}
+          onClick={handleClick('revenue.desc')}
         >
           <div>Revenue 🡣</div>
         </li>
@@ -30,7 +30,7 @@ const MovieSortTabs = (props) => {
           className={classNames('sort_li', {
             active: sort_by === 'vote_average.desc',
           })}
-          onClick={btnSortByHandler('vote_average.desc')}
+          onClick={handleClick('vote_average.desc')}
         >
           <div>Vote average 🡣</div>
         </li>

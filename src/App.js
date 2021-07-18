@@ -5,6 +5,11 @@ import MovieCard from './MovieCard.js';
 import MovieSortTabs from './MovieSortTabs.js';
 import Navigation from './Navigation.js';
 
+const getFetchRequest = ({ page, sort_by }) =>
+  fetch(
+    `${API_URL}/discover/movie?api_key=${API_KEY_3}&sort_by=${sort_by}&page=${page}`
+  ).then((response) => response.json());
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -14,16 +19,19 @@ export default class App extends React.Component {
       willWatchList: [],
       sort_by: 'popularity.desc',
       page: 1,
+      total_pages: null,
     };
   }
 
-  componentDidMount = () => this.getMovies();
+  componentDidMount = () => {
+    this.getMovies();
+  };
 
   componentDidUpdate(_prevProps, prevState) {
-    if (prevState.sort_by !== this.state.sort_by) {
-      this.getMovies();
-    }
-    if (prevState.page !== this.state.page) {
+    if (
+      prevState.sort_by !== this.state.sort_by ||
+      prevState.page !== this.state.page
+    ) {
       this.getMovies();
     }
   }
@@ -56,46 +64,35 @@ export default class App extends React.Component {
 
   increasePageNumber = () => {
     const curentPage = this.state.page;
-    if (curentPage < 1000) {
-      this.setState({
-        page: curentPage + 1,
-      });
-    } else {
-      alert('This is the last page!');
-    }
+    this.setState({
+      page: curentPage + 1,
+    });
   };
 
   decreasePageNumber = () => {
     const curentPage = this.state.page;
-    if (curentPage > 1) {
-      this.setState({
-        page: curentPage - 1,
-      });
-    } else {
-      alert('This is the first page!');
-    }
+    this.setState({
+      page: curentPage - 1,
+    });
   };
 
-  getMovies = () =>
-    fetch(
-      `${API_URL}/discover/movie?api_key=${API_KEY_3}&sort_by=${this.state.sort_by}&page=${this.state.page}`
-    )
-      .then((response) => response.json())
-      .then((data) =>
-        this.setState({
-          moviesData: data.results,
-        })
-      );
+  getMovies = () => {
+    const { page, sort_by } = this.state;
+    getFetchRequest({ page, sort_by }).then((data) =>
+      this.setState({
+        moviesData: data.results,
+        page: data.page,
+        total_pages: data.total_pages,
+      })
+    );
+  };
 
   // TODO:
-  // resetWillWatchList = () => {
-  //   this.state.willWatchList.map((willWatchItem) => {
-  //     this.state.moviesData.filter((movie) => movie.id !== willWatchItem.id);
-  //   });
-  //   this.setState({
-  //     willWatchList: [],
-  //   });
-  // };
+  resetWillWatchList = () => {
+    this.setState({
+      willWatchList: [],
+    });
+  };
 
   updateSortBy = (value) => {
     this.setState({
@@ -106,18 +103,19 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="container">
-        {/* <div className="reset">
+        <div className="reset">
           <button
             className="btn-default btn-reset"
-            // onClick={this.resetWillWatchList.bind(this)}
+            onClick={this.resetWillWatchList.bind(this)}
           >
-            Reset will watch List 📃 (not working)
+            Reset will watch List 📃
           </button>
-        </div> */}
+        </div>
         <Navigation
           page={this.state.page}
           increasePageNumber={this.increasePageNumber}
           decreasePageNumber={this.decreasePageNumber}
+          total_pages={this.state.total_pages}
         />
         <MovieSortTabs
           sort_by={this.state.sort_by}
@@ -153,16 +151,14 @@ export default class App extends React.Component {
                     removeMovieHandler={this.removeMovieHandler}
                     addToWillWatchList={this.addToWillWatchList}
                     removeFromWillWatchList={this.removeFromWillWatchList}
+                    willWatch={this.state.willWatchList.some(
+                      (m) => movie.id === m.id
+                    )}
                   />
                 );
               })}
           </div>
         </div>
-        {/* <Navigation
-          page={this.state.page}
-          increasePageNumber={this.increasePageNumber}
-          decreasePageNumber={this.decreasePageNumber}
-        /> */}
       </div>
     );
   }

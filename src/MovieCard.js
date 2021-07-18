@@ -11,16 +11,6 @@ export default class MovieCard extends React.Component {
     };
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   if (
-  //     nextProps.sort_by !== this.props.sort_by ||
-  //     nextState.willWatch !== this.state.willWatch
-  //   ) {
-  //     return true;
-  //   }
-  //   return false;
-  // }
-
   willWatchButtonHandler = (movie) => {
     const curent = this.state.willWatch;
     curent
@@ -32,7 +22,7 @@ export default class MovieCard extends React.Component {
   };
 
   render() {
-    const { movie, removeMovieHandler } = this.props;
+    const { movie, removeMovieHandler, willWatch } = this.props;
 
     return (
       <div className="card">
@@ -50,7 +40,7 @@ export default class MovieCard extends React.Component {
             <div className="card-buttons">
               <button
                 className={classNames('btn__green', 'btn-default', {
-                  'btn-apply': this.state.willWatch,
+                  'btn-apply': willWatch,
                 })}
                 onClick={() => this.willWatchButtonHandler(movie)}
               >
