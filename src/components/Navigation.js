@@ -1,5 +1,5 @@
 // import React from 'react';
-import './styles.css';
+import '../styles/style.css';
 import classNames from 'classnames/bind';
 
 const Navigation = (props) => {
