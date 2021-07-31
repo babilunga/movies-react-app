@@ -4,7 +4,7 @@ import React from 'react';
 // import MovieSortTabs from './MovieSortTabs.js';
 // import Navigation from './Navigation.js';
 
-import Filters from './Filters.js';
+import Filters from './Filters/Filters.js';
 import MoiveList from './MoiveList.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -109,7 +109,11 @@ export default class App extends React.Component {
     this.state = {
       filters: {
         sort_by: 'popularity.desc',
+        primary_release_year: new Date().getFullYear(),
+        with_genres: [],
       },
+      page: 1,
+      total_pages: 1,
     };
   }
 
@@ -120,27 +124,49 @@ export default class App extends React.Component {
         [e.target.name]: e.target.value,
       },
     }));
-    // console.log(e.target.name, e.target.value);
+  };
+
+  updateValue = (name, value) => {
+    this.setState({
+      [name]: value,
+    });
   };
 
   render() {
-    const { filters } = this.state;
+    const { filters, page, total_pages } = this.state;
+
+    console.log(
+      'App\n\tfilters:',
+      this.state.filters,
+      '\n\tpage:',
+      page,
+      '\n\ttotal_pages',
+      total_pages
+    );
+
     return (
       <div className="container">
-        <div className="row mt-4">
+        <div className="row mt-5">
           <div className="col-4">
             <div className="card w-100">
-              <div className="card-body">
+              <div className="card-body p-4">
                 <h2>Filters:</h2>
                 <Filters
+                  page={page}
+                  total_pages={total_pages}
                   filters={filters}
                   onChangeFilters={this.onChangeFilters}
+                  updateValue={this.updateValue}
                 />
               </div>
             </div>
           </div>
           <div className="col-6">
-            <MoiveList filters={filters} />
+            <MoiveList
+              page={page}
+              filters={filters}
+              updateValue={this.updateValue}
+            />
           </div>
         </div>
       </div>
