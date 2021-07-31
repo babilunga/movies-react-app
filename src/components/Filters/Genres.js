@@ -11,11 +11,9 @@ export default class Genres extends React.Component {
   }
 
   componentDidMount() {
-    const link = `${API_URL}/genre/movie/list?api_key=${API_KEY_3}&language=en-EN`;
+    const link = `${API_URL}/genre/movie/list?api_key=${API_KEY_3}`;
     fetch(link)
-      .then((response) => {
-        return response.json();
-      })
+      .then((responce) => responce.json())
       .then((data) => {
         this.setState({
           genresList: data.genres,
@@ -23,13 +21,13 @@ export default class Genres extends React.Component {
       });
   }
 
-  onChange = (event) => {
+  onChange = (e) => {
     this.props.onChangeFilters({
       target: {
         name: 'with_genres',
-        value: event.target.checked
-          ? [...this.props.with_genres, event.target.value]
-          : this.props.with_genres.filter((g) => g !== event.target.value),
+        value: e.target.checked
+          ? [...this.props.with_genres, e.target.value]
+          : this.props.with_genres.filter((g) => g !== e.target.value),
       },
     });
   };
@@ -46,6 +44,7 @@ export default class Genres extends React.Component {
   render() {
     const { genresList } = this.state;
     const { with_genres } = this.props;
+
     return (
       <div className="mt-4">
         <div>
@@ -57,18 +56,17 @@ export default class Genres extends React.Component {
             Показать все жанры
           </button>
         </div>
-
         <div>Genres:</div>
         {genresList.map((genre) => {
           return (
-            <div className="form-check" key={`genre${genre.id}`}>
+            <div className="form-check form-switch" key={genre.id}>
               <input
                 className="form-check-input"
+                id={`genre${genre.id}`}
                 type="checkbox"
                 value={genre.id}
-                id={`genre${genre.id}`}
                 onChange={this.onChange}
-                checked={with_genres.includes(String(genre.id))}
+                checked={with_genres.includes(`${genre.id}`)}
               />
               <label className="form-check-label" htmlFor={`genre${genre.id}`}>
                 {genre.name}

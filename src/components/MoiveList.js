@@ -23,6 +23,7 @@ export default class MovieList extends Component {
       primary_release_year: primary_release_year,
     };
 
+    // Forming genres list
     if (with_genres.length !== 0) {
       queryStringParams.with_genres = with_genres.join(',');
     }
@@ -31,6 +32,7 @@ export default class MovieList extends Component {
       queryStringParams
     )}`;
 
+    // Fetch request
     fetch(link)
       .then((response) => {
         return response.json();
@@ -65,7 +67,6 @@ export default class MovieList extends Component {
       this.getMovies(filters, 1);
     }
     if (this.props.filters.with_genres !== prevProps.filters.with_genres) {
-      // this.props.updateValue('page', 1);
       this.getMovies(filters, page);
     }
     if (this.props.page !== prevProps.page) {

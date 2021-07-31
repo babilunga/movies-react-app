@@ -157,6 +157,7 @@ export default class App extends React.Component {
                   filters={filters}
                   onChangeFilters={this.onChangeFilters}
                   updateValue={this.updateValue}
+                  with_genres={this.state.with_genres}
                 />
               </div>
             </div>
@@ -170,64 +171,6 @@ export default class App extends React.Component {
           </div>
         </div>
       </div>
-      // <div className="container">
-      //   <div className="reset">
-      //     <button
-      //       className="btn-default btn-reset"
-      //       onClick={this.resetWillWatchList.bind(this)}
-      //     >
-      //       Reset will watch List 📃
-      //     </button>
-      //   </div>
-      //   <Navigation
-      //     page={this.state.page}
-      //     increasePageNumber={this.increasePageNumber}
-      //     decreasePageNumber={this.decreasePageNumber}
-      //     total_pages={this.state.total_pages}
-      //   />
-      //   <MovieSortTabs
-      //     sort_by={this.state.sort_by}
-      //     updateSortBy={this.updateSortBy}
-      //   />
-      //   <div className="main">
-      //     <div className="willwatch-col">
-      //       <div className="willwatch-col-title">Watch list 📋</div>
-      //       {this.state.willWatchList.length === 0 ? (
-      //         <div className="willwatch-col-item">{`Empty will watch list 🙈`}</div>
-      //       ) : (
-      //         ''
-      //       )}
-      //       {this.state.willWatchList.map((movie) => {
-      //         return (
-      //           <div key={movie.id} className="willwatch-col-item">
-      //             {`${movie.title} ⭐ ${movie.vote_average}`}
-      //           </div>
-      //         );
-      //       })}
-      //     </div>
-      //     <div className="movies-col">
-      //       {this.state.moviesData
-      //         .filter(
-      //           (item) =>
-      //             item.backdrop_path !== null && item.poster_path !== null
-      //         )
-      //         .map((movie) => {
-      //           return (
-      //             <MovieCard
-      //               key={movie.id}
-      //               movie={movie}
-      //               removeMovieHandler={this.removeMovieHandler}
-      //               addToWillWatchList={this.addToWillWatchList}
-      //               removeFromWillWatchList={this.removeFromWillWatchList}
-      //               willWatch={this.state.willWatchList.some(
-      //                 (m) => movie.id === m.id
-      //               )}
-      //             />
-      //           );
-      //         })}
-      //     </div>
-      //   </div>
-      // </div>
     );
   }
 }
