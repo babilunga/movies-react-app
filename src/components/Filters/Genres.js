@@ -22,23 +22,15 @@ export default class Genres extends React.Component {
   }
 
   onChange = (e) => {
-    this.props.onChangeFilters({
-      target: {
-        name: 'with_genres',
-        value: e.target.checked
-          ? [...this.props.with_genres, e.target.value]
-          : this.props.with_genres.filter((g) => g !== e.target.value),
-      },
-    });
+    const value = e.target.checked
+      ? [...this.props.with_genres, e.target.value]
+      : this.props.with_genres.filter((g) => g !== e.target.value);
+
+    this.props.updateFilters('with_genres', value);
   };
 
   resetGenres = () => {
-    this.props.onChangeFilters({
-      target: {
-        name: 'with_genres',
-        value: [],
-      },
-    });
+    this.props.updateFilters('with_genres', []);
   };
 
   render() {

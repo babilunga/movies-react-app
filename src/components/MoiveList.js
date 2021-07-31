@@ -75,17 +75,25 @@ export default class MovieList extends Component {
   }
 
   render() {
-    // console.log('MovieList');
     const { movies } = this.state;
     return (
-      <div className="row">
-        {movies.map((movie) => {
-          return (
-            <div key={movie.id} className="col-6 mb-4">
-              <MovieCard item={movie} />
-            </div>
-          );
-        })}
+      <div className="row h-100">
+        {movies.length > 0
+          ? movies.map((movie) => {
+              return (
+                <div key={movie.id} className="col-4 mb-4">
+                  <MovieCard item={movie} />
+                </div>
+              );
+            })
+          : null}
+        {movies.length === 0 ? (
+          <div className="d-flex justify-content-center align-items-center h-100">
+            <span className="fs-3 text-black-50 p-3">
+              Nothing have found :(
+            </span>
+          </div>
+        ) : null}
       </div>
     );
   }

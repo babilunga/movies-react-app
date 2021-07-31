@@ -118,10 +118,17 @@ export default class App extends React.Component {
   }
 
   onChangeFilters = (e) => {
+    const target = e.target;
+    const name = target.name;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.updateFilters(name, value);
+  };
+
+  updateFilters = (name, value) => {
     this.setState((prevState) => ({
       filters: {
         ...prevState.filters,
-        [e.target.name]: e.target.value,
+        [name]: value,
       },
     }));
   };
@@ -145,9 +152,31 @@ export default class App extends React.Component {
     );
 
     return (
+      // <div className="container">
+      //   <div className="row">
+      //     <div
+      //       className="col-3 text-center"
+      //       style={{
+      //         backgroundColor: 'yellow',
+      //       }}
+      //     >
+      //       hello
+      //     </div>
+      //     <div
+      //       className="col text-center"
+      //       style={{
+      //         backgroundColor: 'orange',
+      //       }}
+      //     >
+      //       good day
+      //     </div>
+      //   </div>
+      // </div>
+
       <div className="container">
         <div className="row mt-5">
-          <div className="col-4">
+          <div className="col-3"></div>
+          <div className="col-2 position-fixed">
             <div className="card w-100">
               <div className="card-body p-4">
                 <h2>Filters:</h2>
@@ -155,6 +184,7 @@ export default class App extends React.Component {
                   page={page}
                   total_pages={total_pages}
                   filters={filters}
+                  updateFilters={this.updateFilters}
                   onChangeFilters={this.onChangeFilters}
                   updateValue={this.updateValue}
                   with_genres={this.state.with_genres}
@@ -162,7 +192,7 @@ export default class App extends React.Component {
               </div>
             </div>
           </div>
-          <div className="col-6">
+          <div className="col">
             <MoiveList
               page={page}
               filters={filters}

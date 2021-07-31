@@ -19,6 +19,7 @@ export default class Filters extends React.PureComponent {
       filters: { sort_by, primary_release_year, with_genres },
       onChangeFilters,
       updateValue,
+      updateFilters,
     } = this.props;
 
     // console.log(
@@ -33,7 +34,7 @@ export default class Filters extends React.PureComponent {
           primary_release_year={primary_release_year}
           onChangeFilters={onChangeFilters}
         />
-        <Genres with_genres={with_genres} onChangeFilters={onChangeFilters} />
+        <Genres with_genres={with_genres} updateFilters={updateFilters} />
 
         <Pagination
           page={page}

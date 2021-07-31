@@ -5,10 +5,11 @@ export default class UISelect extends React.Component {
     const { title, name, value, options, onChangeFilters } = this.props;
 
     return (
-      <div className="form-group mt-3">
+      <div className="form-group mt-3  ">
         <label htmlFor={name}>{title}</label>
         <select
-          className="form-control"
+          className="form-select"
+          size={name === 'primary_release_year' ? '5' : null}
           id={name}
           name={name}
           value={value}
