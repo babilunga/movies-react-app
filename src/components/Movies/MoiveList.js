@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MovieCard from './MovieCard';
-import { API_URL, API_KEY_3 } from '../utils/api';
+import { API_URL, API_KEY_3 } from '../../utils/api';
 import queryString from 'query-string';
 
 export default class MovieList extends Component {
@@ -68,11 +68,11 @@ export default class MovieList extends Component {
   render() {
     const { movies } = this.state;
     return (
-      <div className="row">
+      <div className="wrapper movie-template" id="movie_list">
         {movies.length > 0
           ? movies.map((movie) => {
               return (
-                <div key={movie.id} className="col-4 mb-4">
+                <div key={movie.id} className="">
                   <MovieCard item={movie} />
                 </div>
               );

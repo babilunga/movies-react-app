@@ -6,7 +6,7 @@ export default class MovieCard extends React.Component {
     const imgPath = item.backdrop_path || item.poster_path;
 
     return (
-      <div className="card" style={{ width: '100%' }}>
+      <div className="card movie_card" style={{ width: '100%' }}>
         <img
           className="card-img-top card-img--height img-cover"
           src={`https://image.tmdb.org/t/p/w500${imgPath}`}

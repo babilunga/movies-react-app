@@ -23,21 +23,26 @@ export default class Filters extends React.PureComponent {
     } = this.props;
 
     return (
-      <form className="">
-        <SortBy sort_by={sort_by} onChangeFilters={onChangeFilters} />
+      <div className="card" id="filters">
+        <div className="card-body">
+          <h2>Filters:</h2>
+          <form>
+            <SortBy sort_by={sort_by} onChangeFilters={onChangeFilters} />
 
-        <PrimaryReleaseYear
-          primary_release_year={primary_release_year}
-          onChangeFilters={onChangeFilters}
-        />
-        <Genres with_genres={with_genres} updateFilters={updateFilters} />
+            <PrimaryReleaseYear
+              primary_release_year={primary_release_year}
+              onChangeFilters={onChangeFilters}
+            />
+            <Genres with_genres={with_genres} updateFilters={updateFilters} />
 
-        <Pagination
-          page={page}
-          updateValue={updateValue}
-          total_pages={total_pages}
-        />
-      </form>
+            <Pagination
+              page={page}
+              updateValue={updateValue}
+              total_pages={total_pages}
+            />
+          </form>
+        </div>
+      </div>
     );
   }
 }

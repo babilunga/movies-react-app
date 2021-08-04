@@ -12,3 +12,34 @@ body {
 .not-found {
   height: 500px;
 }
+
+.wrapper {
+  display: grid;
+  gap: 1em;
+}
+.main-template {
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'header header'
+    'filters movie_list';
+}
+.movie-template {
+  grid-template-columns: repeat(3, 1fr);
+}
+#header {
+  grid-area: header;
+}
+#filters {
+  grid-area: filters;
+}
+#movie_list {
+  grid-area: movie_list;
+}
+#movie_list .card {
+  height: 350px;
+}
+
+.invalid-feedback {
+  display: block !important;
+}
