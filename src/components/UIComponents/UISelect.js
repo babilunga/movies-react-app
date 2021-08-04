@@ -9,7 +9,6 @@ export default class UISelect extends React.Component {
         <label htmlFor={name}>{title}</label>
         <select
           className="form-select"
-          size={name === 'primary_release_year' ? '5' : null}
           id={name}
           name={name}
           value={value}

@@ -55,20 +55,11 @@ export default class MovieList extends Component {
   componentDidUpdate(prevProps) {
     const { filters, page } = this.props;
 
-    if (this.props.filters.sort_by !== prevProps.filters.sort_by) {
+    if (this.props.filters !== prevProps.filters) {
       this.props.updateValue('page', 1);
       this.getMovies(filters, page);
     }
-    if (
-      this.props.filters.primary_release_year !==
-      prevProps.filters.primary_release_year
-    ) {
-      this.props.updateValue('page', 1);
-      this.getMovies(filters, 1);
-    }
-    if (this.props.filters.with_genres !== prevProps.filters.with_genres) {
-      this.getMovies(filters, page);
-    }
+
     if (this.props.page !== prevProps.page) {
       this.getMovies(filters, page);
     }
@@ -77,7 +68,7 @@ export default class MovieList extends Component {
   render() {
     const { movies } = this.state;
     return (
-      <div className="row h-100">
+      <div className="row">
         {movies.length > 0
           ? movies.map((movie) => {
               return (
@@ -88,8 +79,8 @@ export default class MovieList extends Component {
             })
           : null}
         {movies.length === 0 ? (
-          <div className="d-flex justify-content-center align-items-center h-100">
-            <span className="fs-3 text-black-50 p-3">
+          <div className="d-flex justify-content-center not-found ">
+            <span className="fs-1 text-black-50 align-self-center">
               Nothing have found :(
             </span>
           </div>

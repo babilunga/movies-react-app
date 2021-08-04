@@ -24,7 +24,7 @@ export default class SortBy extends React.PureComponent {
       },
       {
         label: 'Vote average ▲',
-        value: 'popularity.asc',
+        value: 'vote_average.asc',
       },
     ],
   };

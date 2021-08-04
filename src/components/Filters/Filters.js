@@ -22,10 +22,6 @@ export default class Filters extends React.PureComponent {
       updateFilters,
     } = this.props;
 
-    // console.log(
-    //   `Filters\n\tpage: ${page}\n\ttotal_pages: ${total_pages}\n\tsort_by: ${sort_by}`
-    // );
-
     return (
       <form className="">
         <SortBy sort_by={sort_by} onChangeFilters={onChangeFilters} />

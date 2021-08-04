@@ -10,100 +10,7 @@ import MoiveList from './MoiveList.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/style.css';
 
-// const getFetchRequest = ({ page, sort_by }) =>
-//   fetch(
-//     `${API_URL}/discover/movie?api_key=${API_KEY_3}&sort_by=${sort_by}&page=${page}`
-//   ).then((response) => response.json());
-
 export default class App extends React.Component {
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = {
-  //     moviesData: [],
-  //     willWatchList: [],
-  //     sort_by: 'popularity.desc',
-  //     page: 1,
-  //     total_pages: null,
-  //   };
-  // }
-
-  // getMovies = () => {
-  //   const { page, sort_by } = this.state;
-  //   getFetchRequest({ page, sort_by }).then((data) =>
-  //     this.setState({
-  //       moviesData: data.results,
-  //       page: data.page,
-  //       total_pages: data.total_pages,
-  //     })
-  //   );
-  // };
-
-  // componentDidMount = () => {
-  //   this.getMovies();
-  // };
-
-  // componentDidUpdate(_prevProps, prevState) {
-  //   if (
-  //     prevState.sort_by !== this.state.sort_by ||
-  //     prevState.page !== this.state.page
-  //   ) {
-  //     this.getMovies();
-  //   }
-  // }
-
-  // removeMovieHandler = (id) => {
-  //   this.removeFromWillWatchList(id);
-  //   const newMovieList = this.state.moviesData.filter(
-  //     (movie) => movie.id !== id
-  //   );
-  //   this.setState({
-  //     moviesData: newMovieList,
-  //   });
-  // };
-
-  // addToWillWatchList = (movie) => {
-  //   const newWillWatchList = [...this.state.willWatchList, movie];
-  //   this.setState({
-  //     willWatchList: newWillWatchList,
-  //   });
-  // };
-
-  // removeFromWillWatchList = (id) => {
-  //   const newWillWatchList = this.state.willWatchList.filter(
-  //     (movie) => movie.id !== id
-  //   );
-  //   this.setState({
-  //     willWatchList: newWillWatchList,
-  //   });
-  // };
-
-  // increasePageNumber = () => {
-  //   const curentPage = this.state.page;
-  //   this.setState({
-  //     page: curentPage + 1,
-  //   });
-  // };
-
-  // decreasePageNumber = () => {
-  //   const curentPage = this.state.page;
-  //   this.setState({
-  //     page: curentPage - 1,
-  //   });
-  // };
-
-  // resetWillWatchList = () => {
-  //   this.setState({
-  //     willWatchList: [],
-  //   });
-  // };
-
-  // updateSortBy = (value) => {
-  //   this.setState({
-  //     sort_by: value,
-  //   });
-  // };
-
   constructor() {
     super();
     this.state = {
@@ -142,37 +49,7 @@ export default class App extends React.Component {
   render() {
     const { filters, page, total_pages } = this.state;
 
-    console.log(
-      'App\n\tfilters:',
-      this.state.filters,
-      '\n\tpage:',
-      page,
-      '\n\ttotal_pages',
-      total_pages
-    );
-
     return (
-      // <div className="container">
-      //   <div className="row">
-      //     <div
-      //       className="col-3 text-center"
-      //       style={{
-      //         backgroundColor: 'yellow',
-      //       }}
-      //     >
-      //       hello
-      //     </div>
-      //     <div
-      //       className="col text-center"
-      //       style={{
-      //         backgroundColor: 'orange',
-      //       }}
-      //     >
-      //       good day
-      //     </div>
-      //   </div>
-      // </div>
-
       <div className="container">
         <div className="row mt-5">
           <div className="col-3"></div>
