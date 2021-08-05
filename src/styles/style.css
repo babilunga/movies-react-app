@@ -43,3 +43,7 @@ body {
 .invalid-feedback {
   display: block !important;
 }
+
+.error-border {
+  box-shadow: 0 0 0.35em #dc3545;
+}
