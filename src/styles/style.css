@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.card-img--height {
+  height: 250px;
+}
+.img-cover {
+  object-fit: cover;
+}
+.not-found {
+  height: 500px;
+}
+
+.wrapper {
+  display: grid;
+  gap: 1em;
+}
+.main-template {
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "header header"
+    "filters movie_list";
+}
+.movie-template {
+  grid-template-columns: repeat(3, 1fr);
+}
+#header {
+  grid-area: header;
+}
+#filters {
+  grid-area: filters;
+}
+#movie_list {
+  grid-area: movie_list;
+}
+#movie_list .card {
+  height: 350px;
+}
+
+.invalid-feedback {
+  display: block !important;
+}
+
+.error-border {
+  box-shadow: 0 0 0.35em #dc3545;
+}
