@@ -1,7 +1,8 @@
-import React from "react";
-import Login from "./Login/Login.js";
-import UserMenu from "./UserMenu.js";
-import MovieCreationOutlinedIcon from "@material-ui/icons/MovieCreationOutlined";
+import React from 'react';
+import Login from './Login/Login.js';
+import UserMenu from './UserMenu.js';
+import MovieCreationOutlinedIcon from '@material-ui/icons/MovieCreationOutlined';
+import { Link } from 'react-router-dom';
 
 export default class Header extends React.Component {
   render() {
