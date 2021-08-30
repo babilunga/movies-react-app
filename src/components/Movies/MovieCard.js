@@ -2,12 +2,8 @@ import React from 'react';
 import AppContextHOC from '../HOC/AppContextHOC';
 import CallApi from '../../utils/api';
 import { Link } from 'react-router-dom';
-
-//
-import StarOutlined from '@material-ui/icons/StarBorderOutlined';
-import StarFilled from '@material-ui/icons/StarOutlined';
-import BookmarkOutlined from '@material-ui/icons/BookmarkBorderOutlined';
-import BookmarkFilled from '@material-ui/icons/BookmarkOutlined';
+import ButtonFavorite from '../UIComponents/ButtonFavorite';
+import ButtonWatchlist from '../UIComponents/ButtonWatchlist';
 
 class MovieCard extends React.Component {
   addFavorite = () => {
@@ -77,33 +73,23 @@ class MovieCard extends React.Component {
           alt=""
         />
         <div className="card-body">
-          <Link className="card-title" to={`/movie/${item.id}`}>
+          <Link
+            className="card-title text-decoration-none fw-bold"
+            to={`/movie/${item.id}`}
+          >
             {item.title}
           </Link>
           <div className="card-text">Рейтинг: {item.vote_average}</div>
-
-          <button
-            className="btn btn-light bg-white float-end"
-            style={{ border: 'none' }}
-            onClick={this.addWatchlist.bind(null)}
-          >
-            {this.isWatchlist() ? (
-              <BookmarkFilled fontSize="large" />
-            ) : (
-              <BookmarkOutlined fontSize="large" />
-            )}
-          </button>
-          <button
-            className="btn btn-light bg-white float-end me-2"
-            style={{ border: 'none' }}
-            onClick={this.addFavorite.bind(null)}
-          >
-            {this.isFavorite() ? (
-              <StarFilled fontSize="large" />
-            ) : (
-              <StarOutlined fontSize="large" />
-            )}
-          </button>
+          <div className="m-0 p-0 float-end">
+            <ButtonWatchlist
+              isActive={this.isWatchlist}
+              handleClick={this.addWatchlist}
+            />
+            <ButtonFavorite
+              isActive={this.isFavorite}
+              handleClick={this.addFavorite}
+            />
+          </div>
         </div>
       </div>
     );

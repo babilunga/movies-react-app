@@ -1,5 +1,5 @@
-import React from "react";
-import { AppContext } from "../App.js";
+import React from 'react';
+import { AppContext } from '../App.js';
 
 export default (Component) =>
   class AppContextHOC extends React.Component {
