@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import MovieCard from "./MovieCard";
-import MoviesHOC from "./MoviesHOC";
+import React from 'react';
+import PropTypes from 'prop-types';
+import MovieCard from './MovieCard';
+import MoviesHOC from './MoviesHOC';
 
 const Movies = ({ movies }) => (
   <div className="wrapper movie-template" id="movie_list">
@@ -21,11 +21,11 @@ const Movies = ({ movies }) => (
 );
 
 Movies.defaultProps = {
-  movies: []
+  movies: [],
 };
 
 Movies.propTypes = {
-  movies: PropTypes.array.isRequired
+  movies: PropTypes.array.isRequired,
 };
 
 export default MoviesHOC(Movies);

@@ -21,8 +21,8 @@ body {
   grid-template-columns: 1fr 4fr;
   grid-template-rows: auto;
   grid-template-areas:
-    "header header"
-    "filters movie_list";
+    'header header'
+    'filters movie_list';
 }
 .movie-template {
   grid-template-columns: repeat(3, 1fr);
@@ -46,4 +46,11 @@ body {
 
 .error-border {
   box-shadow: 0 0 0.35em #dc3545;
+}
+
+.tab-link:hover {
+  cursor: pointer;
+}
+
+.tabs-template {
 }
