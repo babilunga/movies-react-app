@@ -20,12 +20,12 @@ class Videos extends React.Component {
           <Col sm="12">
             <div className="row ms-3">
               {this.state.clips.map((clip, index) => (
-                <div className="col m-0 mt-3" key={index}>
+                <div className="col m-0 mt-3 p-0" key={index}>
                   <iframe
-                    width="420"
+                    width="430"
                     height="200"
                     src={`https://www.youtube-nocookie.com/embed/${clip.key}`}
-                    title="YouTube video player"
+                    title={`${clip.name}`}
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen

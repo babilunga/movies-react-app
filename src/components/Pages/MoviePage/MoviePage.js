@@ -7,7 +7,12 @@ import Credits from './MoviePageTabs/Credits';
 import ButtonFavorite from '../../UIComponents/ButtonFavorite';
 import ButtonWatchlist from '../../UIComponents/ButtonWatchlist';
 
-import { Route, Switch, Link } from 'react-router-dom';
+import {
+  Route,
+  Switch,
+  Link,
+  NavLink as NavLinkRouter,
+} from 'react-router-dom';
 
 import { TabContent, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
@@ -84,12 +89,13 @@ class MoviePage extends React.Component {
                         this.toggle('1');
                       }}
                     >
-                      <Link
-                        className="text-decoration-none fw-bold text-dark text-uppercase"
+                      <NavLinkRouter
                         to={`/movie/${id}/details`}
+                        className="text-decoration-none text-dark text-uppercase"
+                        activeClassName="selected fw-bold"
                       >
                         Details
-                      </Link>
+                      </NavLinkRouter>
                     </NavLink>
                   </NavItem>
                   <NavItem>
@@ -104,12 +110,13 @@ class MoviePage extends React.Component {
                         this.toggle('2');
                       }}
                     >
-                      <Link
-                        className="text-decoration-none fw-bold text-dark text-uppercase"
+                      <NavLinkRouter
                         to={`/movie/${id}/videos`}
+                        className="text-decoration-none text-dark text-uppercase"
+                        activeClassName="selected fw-bold"
                       >
                         Videos
-                      </Link>
+                      </NavLinkRouter>
                     </NavLink>
                   </NavItem>
                   <NavItem>
@@ -124,12 +131,13 @@ class MoviePage extends React.Component {
                         this.toggle('3');
                       }}
                     >
-                      <Link
-                        className="text-decoration-none fw-bold text-dark text-uppercase"
+                      <NavLinkRouter
                         to={`/movie/${id}/credits`}
+                        className="text-decoration-none text-dark text-uppercase"
+                        activeClassName="selected fw-bold"
                       >
                         Credits
-                      </Link>
+                      </NavLinkRouter>
                     </NavLink>
                   </NavItem>
                 </Nav>
@@ -145,9 +153,9 @@ class MoviePage extends React.Component {
                       <Credits id={id} />
                     </Route>
                     <Route>
-                      <div className="text fs-4 mt-3 ms-3 text-secondary">
+                      {/* <div className="text fs-4 mt-3 ms-3 text-secondary">
                         Chech film details...
-                      </div>
+                      </div> */}
                     </Route>
                   </Switch>
                 </TabContent>
