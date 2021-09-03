@@ -25,7 +25,7 @@ class Details extends React.Component {
       <TabPane tabId="1">
         <Row>
           <Col sm="12">
-            <table class="table">
+            <table className="table">
               <tbody>
                 <tr>
                   <th scope="row">Status</th>
@@ -49,9 +49,9 @@ class Details extends React.Component {
                   </th>
                   <td>
                     {countries.length === 0 ? 'No information' : null}
-                    {countries.map((item) => (
+                    {countries.map((item, index) => (
                       <div>
-                        <span className="m-0 badge bg-primary">
+                        <span className="m-0 badge bg-primary" key={index}>
                           {item.name}
                         </span>
                       </div>
@@ -72,9 +72,9 @@ class Details extends React.Component {
                   </th>
                   <td>
                     {companies.length === 0 ? 'No information' : null}
-                    {companies.map((item) => (
+                    {companies.map((item, index) => (
                       <div>
-                        <span className="m-0 badge bg-primary">
+                        <span className="m-0 badge bg-primary" key={index}>
                           {item.name}
                         </span>
                       </div>
@@ -85,9 +85,9 @@ class Details extends React.Component {
                   <th scope="row">Genres</th>
                   <td className="">
                     {genres.length === 0 ? 'No information' : null}
-                    {genres.map((item) => (
+                    {genres.map((item, index) => (
                       <div>
-                        <span className="m-0 badge bg-primary">
+                        <span className="m-0 badge bg-primary" key={index}>
                           {item.name}
                         </span>
                       </div>

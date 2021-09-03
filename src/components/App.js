@@ -8,7 +8,8 @@ import MoviePage from './Pages/MoviePage/MoviePage';
 
 import CallApi from './../utils/api.js';
 
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import SimpleReactLightbox from 'simple-react-lightbox';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/style.css';
